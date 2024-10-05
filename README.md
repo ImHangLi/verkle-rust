@@ -58,7 +58,7 @@ Now you're ready to start implementing the Verkle tree!
 
 In your `src/verkle_tree.rs` file, let's implement the basic structures we'll need.
 
-💡 **Cryptographic Hint:** Field elements in Verkle trees typically use finite field arithmetic over a prime field. This ensures that all operations result in another element within the same field, crucial for the security of cryptographic constructions.
+Field elements in Verkle trees typically use finite field arithmetic over a prime field. This ensures that all operations result in another element within the same field, crucial for the security of cryptographic constructions.
 
 ```rust
 use curve25519_dalek::scalar::Scalar;
@@ -111,7 +111,7 @@ impl Polynomial {
 
 Next, let's implement the polynomial commitment scheme based on the inner product argument (IPA).
 
-💡 **Cryptographic Hint:** IPA-based polynomial commitments allow for efficient proofs of evaluation. The commitment is a single group element, and the proof size is logarithmic in the degree of the polynomial.
+IPA-based polynomial commitments allow for efficient proofs of evaluation. The commitment is a single group element, and the proof size is logarithmic in the degree of the polynomial.
 
 ```rust
 use curve25519_dalek::ristretto::{RistrettoPoint, CompressedRistretto};
@@ -164,7 +164,7 @@ impl PolyCommitment {
 
 Now, let's implement the Verkle tree structure using polynomial commitments at each node.
 
-💡 **Cryptographic Hint:** In Verkle trees, each internal node contains a commitment to a polynomial whose evaluations correspond to the children of that node. This allows for more compact proofs compared to Merkle trees.
+In Verkle trees, each internal node contains a commitment to a polynomial whose evaluations correspond to the children of that node. This allows for more compact proofs compared to Merkle trees.
 
 ```rust
 use rand::thread_rng;
@@ -313,7 +313,7 @@ This implementation provides a more complete and secure Verkle tree structure, w
 
 Finally, let's implement proof generation and verification methods for the Verkle tree.
 
-💡 **Cryptographic Hint:** Verkle tree proofs leverage the properties of the underlying polynomial commitment scheme. The proof typically consists of commitments to polynomials along the path from root to leaf, along with IPA proofs for the relevant evaluations.
+Verkle tree proofs leverage the properties of the underlying polynomial commitment scheme. The proof typically consists of commitments to polynomials along the path from root to leaf, along with IPA proofs for the relevant evaluations.
 
 First, let's define our `IpaProof` struct:
 
